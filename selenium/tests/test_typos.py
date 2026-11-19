@@ -11,11 +11,9 @@ def test_detect_typo(browser):
     max_count = 10
     correct_text = "Sometimes you'll see a typo, other times you won't."
 
-    text = browser.find_element(By.TAG_NAME, "p")
-
     while count < max_count:
-        p = browser.find_element(By.XPATH, "//p[contains(text(), 'Sometimes you')]")
-        shown_text = p.text.strip()
+        text = browser.find_element(By.XPATH, "//p[contains(text(), 'Sometimes you')]")
+        shown_text = text.text.strip()
         if shown_text != correct_text:
             print(f"Опечатка найдена с попытки {count}: {shown_text}")
             break
